@@ -1,0 +1,23 @@
+****Two Pointer Technique****
+      When to use it
+
+      Use two pointers when:
+      The data is in an array/string.
+      You need to compare elements from both ends or maintain a window.
+      A brute-force solution is O(n²).
+
+      Common problems:
+      Container With Most Water
+      Two Sum (sorted array)
+      Trapping Rain Water
+      Remove Duplicates
+      Palindrome checking
+      Merge two sorted arrays
+
+      Two Pointers: Use two indices to scan an array efficiently instead of checking every pair.
+      When to use: Sorted arrays, opposite-end comparisons, or when brute force is O(n²).
+      Container With Most Water: Start at both ends, compute the area, then move the pointer with the smaller height because the width always decreases and only a taller minimum height can increase the area.
+      Sorted Two Sum: Compare the sum; if it's too small, move the left pointer; if it's too large, move the right pointer.
+      Sliding Window (a two-pointer variant): Expand the right pointer to include elements and move the left pointer to maintain the required condition.
+      Time Complexity: Usually O(n) because each pointer moves at most n times.
+      Space Complexity: Usually O(1).
