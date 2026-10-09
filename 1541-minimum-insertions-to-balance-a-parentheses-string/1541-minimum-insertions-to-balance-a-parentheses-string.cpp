@@ -1,61 +1,43 @@
 #include <string>
 #include <vector>
-#include <iostream>
-using namespace std;
 class Solution {
 public:
     int minInsertions(string s) {
-        int in = 0;
-        int x = 0;
         int y = 0;
+        int in = 0;
+        vector<char> stack = {};
         int size = s.size();
         for(int i=0; i < size; i++){
-            if(s[i] == '('){
-                x ++;
-                cout<<"1";
+            if(s[i]=='('){
+                stack.push_back('(');
             }
-            if(s[i]== ')'){
-                y++;
-                cout<<"2";
+            if(s[i]==')'){
+                y ++;
             }
             if(y == 1 && s[i+1] != ')'){
-                 cout<<"3";
-                if(x != 0){
+                if(stack.empty()!=true){
                     in++;
-                    x--;
-                    cout<<"a";
+                    stack.pop_back();
                 }
-                else if( x == 0){
-                    in++;
-                    in++;
-                    if(x != 0){
-                        x--;
-                    }
-                    cout<<"b";
+                else{
+                    in += 2;
                 }
                 y = 0;
             }
             if(y == 2){
-                 cout<<"4";
-                 if(x != 0){
-                    x--;
-                    cout<<"c";
+                if(stack.empty()==true){
+                    in +=1;
                 }
-                else if( x == 0){
-                    in++;
-                    cout<<"d";
+                else{
+                    stack.pop_back();
                 }
                 y = 0;
-            }
-            
-            
 
+            }
 
         }
-        if(x != 0){
-                in += x*2;
-                x = 0;
-            }
+       
+        in += stack.size()*2;
         
 
 
