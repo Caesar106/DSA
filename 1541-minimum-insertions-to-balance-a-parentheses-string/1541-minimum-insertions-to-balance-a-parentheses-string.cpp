@@ -5,13 +5,12 @@ public:
     int minInsertions(string s) {
         int x = 0;
         int in = 0;
-        int size = s.size();
-        for(int i=0; i < size; i++){
+        for(int i=0; i < s.size(); i++){
             if(s[i]=='('){
                 x++;
             }
             else{
-                if(i+1 < size && s[i+1]==')'){
+                if(i+1 < s.size() && s[i+1]==')'){
                     i++;
                 }
                 else{
