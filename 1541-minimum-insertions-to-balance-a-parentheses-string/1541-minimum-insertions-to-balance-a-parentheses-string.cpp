@@ -3,44 +3,31 @@
 class Solution {
 public:
     int minInsertions(string s) {
-        int y = 0;
+        int x = 0;
         int in = 0;
-        vector<char> stack = {};
         int size = s.size();
         for(int i=0; i < size; i++){
             if(s[i]=='('){
-                stack.push_back('(');
+                x++;
             }
-            if(s[i]==')'){
-                y ++;
-            }
-            if(y == 1 && s[i+1] != ')'){
-                if(stack.empty()!=true){
+            else{
+                if(i+1 < size && s[i+1]==')'){
+                    i++;
+                }
+                else{
                     in++;
-                    stack.pop_back();
+                }
+                 if (x>0){
+                    x--;
                 }
                 else{
-                    in += 2;
+                    in++;
                 }
-                y = 0;
-            }
-            if(y == 2){
-                if(stack.empty()==true){
-                    in +=1;
-                }
-                else{
-                    stack.pop_back();
-                }
-                y = 0;
-
-            }
-
+            } 
         }
        
-        in += stack.size()*2;
+        in += x*2;
         
-
-
         return in;
     }
 };
